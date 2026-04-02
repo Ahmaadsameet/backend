@@ -1,14 +1,16 @@
-class User:
-    def __init__(self,id=None,name=None,email=None,password=None):
-        self.id=id
-        self.name=name
-        self.email=email
-        self.password=password
+from  sqlalchemy import colums ,integers, string
+from database import Base
+
+class User(Base):
+    __tablename__ = "users"
+
+    id = colum(integers, primary_key=True, index=True)
+    email = colum(string, unique=True, index=True)
+    password = colum(string)
 
     def to_dict(self):
-        return{
-    "id":self.id,
-    "name":self.name,
-    "email":self.email,
-}
-    
+        return {
+            "id": self.id,
+            "email": self.email,
+            "password": self.password
+        }

@@ -1,8 +1,10 @@
 from fastApi import FastAPI
-
-app=FastAPI()
 from app.user.route import router as user_router
+app=FastAPI()
+
+
 app.include_router(user_router)
+
 
 @app.get("/")
 def read_root():
